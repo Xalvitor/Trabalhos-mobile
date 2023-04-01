@@ -102,8 +102,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         })
 
         console.log(anosList)
-        document.getElementById('valueAno').innerHTML = anosList.value
-        document.getElementById('valueMarca').innerHTML = marcasList.value 
+        var value = anosList.options[anosList.selectedIndex].value
+        var text = anosList.options[anosList.selectedIndex].text
+        document.getElementById('valueAno').innerHTML = anosList.options[anosList.selectedIndex].text
+        document.getElementById('valueMarca').innerHTML = marcasList.options[marcasList.selectedIndex].text 
 
     })
 
