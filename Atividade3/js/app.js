@@ -6,6 +6,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const marcasList = document.querySelector("#vehicles_brand")
     const modeloList = document.querySelector("#vehicles_model")
     const anosList = document.querySelector("#vehicles_year")
+    const searchButton = document.querySelector('#search_button')
+    const modal = document.querySelector('#modal')
+    const fechar = document.querySelector('#fechar')
+    const price = document.querySelector('#price')
 
     fetch(endpointMarcas)
         .then((res)=>{
@@ -28,6 +32,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         modeloList.innerHTML = "";
         anosList.innerHTML = "";
+        searchButton.classList.add('hide')
         fetch(`${endpointMarcas}/${this.value}/modelos`)
             .then((resp) => {
 
@@ -52,7 +57,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     modeloList.addEventListener("change", () => {
 
         anosList.innerHTML = "";
-
+        searchButton.classList.add('hide')
         fetch(`${endpointMarcas}/${marcasList.value}/modelos/${modeloList.value}/anos`)
             .then((resp) => {
                 return resp.json()
@@ -69,5 +74,46 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
             })
     })    
+    anosList.addEventListener("change", () =>{
 
+
+        if(!anosList.value){
+            searchButton.classList.add('hide')
+        }else{
+            searchButton.classList.remove('hide')
+        }
+        
+
+    })
+
+    searchButton.addEventListener("click", () =>{
+
+        if(!anosList.value){
+            return;
+        }
+
+        modal.classList.remove('hide_modal')
+
+        fetch(`${endpointMarcas}/${marcasList.value}/modelos/${modeloList.value}/anos/${anosList.value}`)
+        .then((resp) => {
+            return resp.json()
+        }).then((data) => {
+            price.innerHTML = data.Valor
+        })
+
+        console.log(anosList)
+        document.getElementById('valueAno').innerHTML = anosList.value
+        document.getElementById('valueMarca').innerHTML = marcasList.value 
+
+    })
+
+    fechar.addEventListener("click", () =>{
+
+        if(!anosList.innerHTML){
+            return;
+        }
+        console.log(modal.classList)
+        modal.classList.add('hide_modal')
+    })
 });
+
