@@ -99,13 +99,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
             return resp.json()
         }).then((data) => {
             price.innerHTML = data.Valor
+            document.getElementById('valueMesReferencia').innerHTML = data.MesReferencia
+            document.getElementById('valueFipe').innerHTML = data.CodigoFipe
+            document.getElementById('valueAno').innerHTML = data.AnoModelo
+            document.getElementById('valueMarca').innerHTML = data.Marca
         })
 
         console.log(anosList)
         var value = anosList.options[anosList.selectedIndex].value
         var text = anosList.options[anosList.selectedIndex].text
-        document.getElementById('valueAno').innerHTML = anosList.options[anosList.selectedIndex].text
-        document.getElementById('valueMarca').innerHTML = marcasList.options[marcasList.selectedIndex].text 
+
 
     })
 
