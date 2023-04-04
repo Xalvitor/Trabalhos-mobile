@@ -31,14 +31,14 @@
             <div class="vehicles_types_container">
  
                 <ul id="vehicles_types">
-                    <li data-type="motos" class="active">
-                        <img src="images/moto.svg" alt="Motocicletas">
+                    <li class="botaoVeiculo" id="motoImagem" data-type="motos">
+                        <img class="imagemVeiculo" src="images/moto.svg" alt="Motocicletas">
                     </li>
-                    <li data-type="caminhoes">
-                        <img src="images/truck.svg" alt="Caminhões">
+                    <li class="botaoVeiculo" id="caminhaoImagem" data-type="caminhoes">
+                        <img class="imagemVeiculo" src="images/truck.svg" alt="Caminhões">
                     </li>
-                    <li data-type="carros">
-                        <img src="images/car.svg" alt="Carros de Passeio">
+                    <li class="botaoVeiculo" id="carroImagem" data-type="carros">
+                        <img class="imagemVeiculo"  src="images/car.svg" alt="Carros de Passeio">
                     </li>
                 </ul>
  
@@ -46,19 +46,19 @@
  
             <h2>Selecione o fabricante do veículo</h2>
  
-            <select id="vehicles_brand">
+            <select id="vehicles_brand" disabled>
                 <option value=""></option>
             </select>
  
             <h2>Selecione o modelo do veículo</h2>
  
-            <select id="vehicles_model">
+            <select id="vehicles_model" disabled>
                 <option value=""></option>
             </select>
  
             <h2>Selecione o ano do veículo</h2>
  
-            <select id="vehicles_year"></select>
+            <select id="vehicles_year" disabled></select>
  
             <div id="search_button" class="search_button hide">
                 <div class="icon">
