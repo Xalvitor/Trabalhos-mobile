@@ -13,15 +13,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const caminhao = document.querySelector('#caminhaoImagem')
     const carro = document.querySelector('#carroImagem')
     const controladorVeiculos = document.querySelector('#vehicles_types')
-    
+
+    // function urlVeiculo(){
+    //     botaoVeiculo = document.querySelector(".botaoVeiculo.active")
+    //     return `${baseUrl}${botaoVeiculo}/marcas`
+    // }
+
     controladorVeiculos.addEventListener("click",(event) => {
         let botaoVeiculo = event.target;
         let tipoVeiculo = botaoVeiculo.dataset.type;
-        
-        marcasList.innerHTML = "";
-        modeloList.innerHTML = "";
-        anosList.innerHTML = "";
-
 
         if(!tipoVeiculo){
             return;
@@ -34,6 +34,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         anosList.disabled = true;
         botaoVeiculo.classList.add('active')
 
+        marcasList.innerHTML = "";
+        modeloList.innerHTML = "";
+        anosList.innerHTML = "";
 
         fetch(`${baseUrl}${tipoVeiculo}/marcas`)
         .then((res)=>{
@@ -109,9 +112,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
         anosList.disabled = false;
 
-        let defaultOption = document.createElement("option");
-        anosList.defaultOption.innerHTML = '- - -'
-
         tipoVeiculo = document.querySelector(".botaoVeiculo.active").dataset.type
         fetch(`${baseUrl}${tipoVeiculo}/marcas/${marcasList.value}/modelos/${modeloList.value}/anos`)
             .then((resp) => {
@@ -130,6 +130,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             })
     })    
     anosList.addEventListener("change", () =>{
+
 
         if(!anosList.value){
             searchButton.classList.add('hide')
