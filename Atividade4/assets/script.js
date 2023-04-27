@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       inserirTarefa(){
         if(this.novaTarefa && !this.tarefaExiste){
           this.tarefas.push(this.novaTarefa)
-          this.novaTarefa = ''
+      this.novaTarefa = ''
         }
       },
     }
